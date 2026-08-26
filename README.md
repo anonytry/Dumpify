@@ -1,23 +1,70 @@
-# dumpyara
+# Dumpify
 
-[![Dump](https://github.com/Jiovanni-dump/dumpyara/actions/workflows/dump.yml/badge.svg)](https://github.com/Jiovanni-dump/dumpyara/actions/workflows/dump.yml)
+Android firmware dump tool powered by GitHub Actions.
 
-**[Telegram channel (feed)](https://t.me/jiovanni_dumps)**
+## Quick Start
 
-**Script requirements**:
+```bash
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/anonytry/Dumpify/master/bootstrap.sh)"
+```
 
-      Linux or Mac
+## First Time Setup
 
-***For setting up requirements***:
+1. Fork this repository
+2. Go to your fork → Settings → Secrets and variables → Actions
+3. Click "New repository secret"
+4. Name: `USER_TOKEN`
+5. Value: Your GitHub token (with `repo` scope)
+6. Click "Add secret"
 
-      bash setup.sh
+## How to Use
 
-**Usage**:
+After first time setup, just run:
 
-      bash dumpyara.sh "<OTAlink> OR <OTA file path>" yourGithubToken
+```bash
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/anonytry/Dumpify/master/bootstrap.sh)"
+```
 
-You can also place your github oauth token in a file called `.githubtoken` and telegram bot token in a file called `.tgtoken` in the root of this repository, if you wish it is ignored by git.
-Before you start, make sure that dumpyara scripts are mapped to your own org or account, otherwise you'll only dump, not push.
+Enter:
+- Your forked repo URL
+- Your GitHub token (for trigger only, not stored)
+- OTA/ROM URL
 
-**Supported image types**:
-check [here](https://github.com/AndroidDumps/Firmware_extractor/blob/master/extractor.sh#L3)
+Wait for results. Fingerprint and device info appear in the Actions run summary.
+
+## How It Works
+
+1. Bootstrap script triggers GitHub Actions in your fork
+2. Actions download and extract the OTA
+3. Extracted files pushed to your repo as a new branch
+4. Dump link printed on your terminal
+5. Fingerprint + device info shown in the Actions run summary
+6. Cleanup - everything clean
+
+## Supported File Types
+
+- `.zip`, `.tgz`, `.tar.gz`
+- `.img` (raw images)
+- `.mbn`, `.ozip`
+- OTA packages from major manufacturers
+
+## Repository Structure
+
+```
+YourRepo/
+├── master (code)
+├── google-husky-15-... (dump branch)
+├── samsung-a55-14-... (dump branch)
+└── ...
+```
+
+## Token Security
+
+- Your token is NEVER stored in files
+- Used only for API call to trigger workflow
+- GitHub Actions masks tokens in logs (***)
+- Token scope: `repo` (required for workflow trigger)
+
+## Credits
+
+Based on [dumpyara](https://github.com/Jiovanni-dump/dumpyara) by Jiovanni-dump.

@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       urls:
-        description: 'URLs'
+        description: 'ROM/OTA.zip URL'
         required: true
 
 jobs:
@@ -28,14 +28,29 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Create .githubtoken file
-        run: echo "${{ secrets.GIT_TOKEN }}" > .githubtoken
-
-      - name: Create .tgtoken file
-        run: echo "${{ secrets.TELEGRAM_TOKEN }}" > .tgtoken
+        run: echo "${{ secrets.USER_TOKEN }}" > .githubtoken
 
       - name: Set up environment
         run: bash setup.sh
 
-      - name: Run dumpyara
+      - name: Run dumpify
+        run: bash dumpify.sh '${{ inputs.urls }}'
+
+      - name: Output results
+        if: success()
         run: |
-          bash dumpyara.sh '${{ inputs.urls }}'
+          WORKING_DIR=$(ls -d working/*/ 2>/dev/null | head -1)
+          if [ -f "${WORKING_DIR}README.md" ]; then
+            echo "## Dump Results" >> $GITHUB_STEP_SUMMARY
+            cat "${WORKING_DIR}README.md" >> $GITHUB_STEP_SUMMARY
+          fi
+          if [ -f "${WORKING_DIR}fingerprint_entry.txt" ]; then
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "## Fingerprint" >> $GITHUB_STEP_SUMMARY
+            cat "${WORKING_DIR}fingerprint_entry.txt" >> $GITHUB_STEP_SUMMARY
+          fi
+
+      - name: Cleanup
+        if: always()
+        run: |
+          rm -rf working/ external/ .githubtoken

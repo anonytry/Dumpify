@@ -39,10 +39,7 @@ else
     LOGW "GitHub token not found. Dumping just locally..."
 fi
 
-# Telegram token
-if [[ -f ".tgtoken" ]]; then
-    TG_TOKEN=$(< .tgtoken)
-fi
+
 
 # Check whether input is a string or a file
 if echo "${1}" | grep -e '^\(https\?\|ftp\)://.*$' > /dev/null; then
@@ -120,7 +117,7 @@ else
     fi
 fi
 
-ORG=Jiovanni-dump #your GitHub org name
+ORG="${GITHUB_REPOSITORY_OWNER}"
 EXTENSION=$(echo "${INPUT##*.}" | inline-detox)
 UNZIP_DIR=$(basename "${INPUT/.$EXTENSION/}" | sed 's/%[0-9A-Fa-f][0-9A-Fa-f]/_/g' | inline-detox)
 WORKING=${PWD}/working/${UNZIP_DIR}_
@@ -477,16 +474,70 @@ description=$(rg -m1 -INoP --no-messages "(?<=^ro.build.description=).*" {system
 is_ab=$(grep -oP "(?<=^ro.build.ab_update=).*" -hs {system,system/system,vendor}/build*.prop | head -n 1)
 [[ -z "${is_ab}" ]] && is_ab="false"
 branch=$(echo "$description" | tr ' ' '-')
-repo=$(echo "$brand"_"$codename"_dump | tr '[:upper:]' '[:lower:]' | tr -d '\r\n')
 platform=$(echo "$platform" | tr '[:upper:]' '[:lower:]' | tr -dc '[:print:]' | tr '_' '-' | cut -c 1-35)
 top_codename=$(echo "$codename" | tr '[:upper:]' '[:lower:]' | tr -dc '[:print:]' | tr '_' '-' | cut -c 1-35)
 manufacturer=$(echo "$manufacturer" | tr '[:upper:]' '[:lower:]' | tr -dc '[:print:]' | tr '_' '-' | cut -c 1-35)
-printf "# %s\n- manufacturer: %s\n- platform: %s\n- codename: %s\n- flavor: %s\n- release: %s\n- id: %s\n- incremental: %s\n- tags: %s\n- fingerprint: %s\n- is_ab: %s\n- brand: %s\n- branch: %s\n- repo: %s\n" "$description" "$manufacturer" "$platform" "$codename" "$flavor" "$release" "$id" "$incremental" "$tags" "$fingerprint" "$is_ab" "$brand" "$branch" "$repo" > "${WORKING}"/README.md
+if [[ -s skipped_files.txt ]]; then
+    SKIP_CONTENT=$(while IFS= read -r f; do
+        [[ -f "$f" ]] && echo "$(du -h "$f" | cut -f1)  $f"
+    done < skipped_files.txt)
+fi
+
+README_CONTENT="# ${description}
+- manufacturer: ${manufacturer}
+- platform: ${platform}
+- codename: ${codename}
+- flavor: ${flavor}
+- release: ${release}
+- id: ${id}
+- incremental: ${incremental}
+- tags: ${tags}
+- fingerprint: ${fingerprint}
+- is_ab: ${is_ab}
+- brand: ${brand}
+- branch: ${branch}"
+
+if [[ -n "$SKIP_CONTENT" ]]; then
+    README_CONTENT="${README_CONTENT}
+
+## Skipped Files
+These files were not pushed:
+\`\`\`
+${SKIP_CONTENT}
+\`\`\`"
+fi
+
+README_CONTENT="${README_CONTENT}
+
+## Decompressing Large Files
+Files over 97MB are compressed with zstd.
+\`\`\`bash
+# Install zstd
+sudo apt install zstd      # Debian/Ubuntu
+sudo pacman -S zstd        # Arch
+pkg install zstd            # Termux
+
+# Single file
+zstd -d filename.zst --rm
+
+# All .zst files
+find . -name '*.zst' -exec sh -c 'zstd -d \"\$1\" --rm' _ {} \;
+\`\`\`"
+
+echo "$README_CONTENT" > "${WORKING}"/README.md
 cat "${WORKING}"/README.md
 
+# Generate fingerprint entry for fingerprints.txt
+FINGERPRINTS_ENTRY="Brand: ${manufacturer} | Codename: ${codename} | Version: ${release}"
+FINGERPRINTS_ENTRY="${FINGERPRINTS_ENTRY}\nFingerprint: ${fingerprint}"
+FINGERPRINTS_ENTRY="${FINGERPRINTS_ENTRY}\nBranch: ${branch}"
+FINGERPRINTS_ENTRY="${FINGERPRINTS_ENTRY}\n---"
+echo -e "$FINGERPRINTS_ENTRY" > "${WORKING}/fingerprint_entry.txt"
+
 if [[ -n $GIT_OAUTH_TOKEN ]]; then
-    GITPUSH=(git push https://"$GIT_OAUTH_TOKEN"@github.com/"$ORG"/"${repo,,}".git "$branch")
-    curl --silent --fail "https://raw.githubusercontent.com/$ORG/$repo/$branch/all_files.txt" 2> /dev/null && echo "Firmware already dumped!" && exit 1
+    REPO_NAME=$(basename "${GITHUB_REPOSITORY:-Dumpify}")
+    GITPUSH=(git push https://"$GIT_OAUTH_TOKEN"@github.com/"$ORG"/"${REPO_NAME}".git "$branch")
+    curl --silent --fail "https://raw.githubusercontent.com/$ORG/$REPO_NAME/$branch/all_files.txt?$(date +%s)" 2> /dev/null && echo "Firmware already dumped!" && exit 1
     git init
     if [[ -z "$(git config --get user.email)" ]]; then
         git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -494,11 +545,11 @@ if [[ -n $GIT_OAUTH_TOKEN ]]; then
     if [[ -z "$(git config --get user.name)" ]]; then
         git config user.name "github-actions[bot]"
     fi
-    curl -s -X POST -H "Authorization: token ${GIT_OAUTH_TOKEN}" -d '{ "name": "'"$repo"'" }' "https://api.github.com/orgs/${ORG}/repos" #create new repo
-    curl -s -X PUT -H "Authorization: token ${GIT_OAUTH_TOKEN}" -H "Accept: application/vnd.github.mercy-preview+json" -d '{ "names": ["'"$manufacturer"'","'"$platform"'","'"$top_codename"'"]}' "https://api.github.com/repos/${ORG}/${repo}/topics"
-    git remote add origin https://github.com/$ORG/"${repo,,}".git
+    git remote add origin https://github.com/$ORG/"${REPO_NAME}".git
     git checkout -b "$branch"
     find . -size +97M -printf '%P\n' -o -name "*sensetime*" -printf '%P\n' -o -name "*.lic" -printf '%P\n' >| .gitignore
+    { find . -name "*sensetime*" -printf '%P\n'; find . -name "*.lic" -printf '%P\n'; } > skipped_files.txt
+    [[ ! -s skipped_files.txt ]] && rm -f skipped_files.txt
     # Compress large files in parallel
     compress_file() {
         local file_path="$1"
@@ -569,23 +620,4 @@ else
     exit 1
 fi
 
-# Telegram channel
-if [[ -n "$TG_TOKEN" ]]; then
-    CHAT_ID="@jiovanni_dumps"
-    commit_head=$(git log --format=format:%H | head -n 1)
-    commit_link="https://github.com/$ORG/$repo/commit/$commit_head"
-    echo -e "Sending telegram notification"
 
-    TEXT=$(cat <<EOF
-<b>Brand: $brand</b>
-<b>Device: $codename</b>
-<b>Version:</b> $release
-<b>Fingerprint:</b> $fingerprint
-<b>GitHub:</b>
-<a href="$commit_link">Commit</a>
-<a href="https://github.com/$ORG/$repo/tree/$branch/">$codename</a>
-EOF
-)
-
-    curl -s "https://api.telegram.org/bot${TG_TOKEN}/sendmessage" --data "text=${TEXT}&chat_id=${CHAT_ID}&parse_mode=HTML&disable_web_page_preview=True" > /dev/null
-fi

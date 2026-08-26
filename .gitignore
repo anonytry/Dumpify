@@ -1,6 +1,5 @@
 .githubtoken
-.tgtoken
+.dumpify/
 working/
 external/
 Firmware_extractor/
-config.py
