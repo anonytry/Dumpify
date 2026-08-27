@@ -1,0 +1,15 @@
+ro.miui.google.csp=true
+ro.product.mod_device=sky_global
+ro.miui.build.region=global
+setupwizard.feature.enable_quick_start_flow=true
+ro.appsflyer.preinstall.path=/data/miui/pai/pre_install.appsflyer
+ro.com.google.ime.system_lm_dir=product/usr/share/ime/google/d3_lms/
+ro.miui.pai.preinstall.path=/data/miui/pai/
+ro.miui.customized_clientid=2
+setupwizard.feature.enable_quick_enhanced_biometrics_flow=true
+ro.mi.os.flavor=phone
+ro.mi.os.version.publish=true
+ro.mi.os.version.code=2
+ro.mi.os.version.name=OS2.0
+ro.mi.os.version.incremental=OS2.0.210.0.VMWMIXM
+ro.build.version.smr_baseversion=OS2.0.209.0.VMWMIXM

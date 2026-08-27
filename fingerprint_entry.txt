@@ -1,0 +1,4 @@
+Brand: xiaomi | Codename: river | Version: 15
+Fingerprint: Redmi//river:14/UKQ1.231003.002/OS2.0.210.0.VMWMIXM:user/release-keys
+Branch: missi-user-15-AQ3A.240912.001-OS2.0.210.0.VMWMIXM-release-keys
+---
