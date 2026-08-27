@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--MIUI ADD:Thermal_ConfigFile-->
+<scene>
+    <sceneid id="-1">
+        <name>default</name>
+        <temp>48000</temp>
+    </sceneid>
+    <sceneid id="0">
+        <name>normal</name>
+    </sceneid>
+    <sceneid id="3">
+        <name>huanji</name>
+    </sceneid>
+    <sceneid id="4">
+        <name>videochat</name>
+    </sceneid>
+    <sceneid id="5">
+        <name>abnormal</name>
+    </sceneid>
+    <sceneid id="6">
+        <name>nightvideo</name>
+    </sceneid>
+    <sceneid id="7">
+        <name>dolbyvision</name>
+    </sceneid>
+    <sceneid id="8">
+        <name>phone</name>
+    </sceneid>
+    <sceneid id="9">
+        <name>tgame</name>
+    </sceneid>
+    <sceneid id="20">
+        <name>mgame</name>
+    </sceneid>
+    <sceneid id="11">
+        <name>class0</name>
+    </sceneid>
+    <sceneid id="13">
+        <name>tgame</name>
+    </sceneid>
+    <sceneid id="16">
+        <name>tgame</name>
+    </sceneid>
+    <sceneid id="14">
+        <name>youtube</name>
+    </sceneid>
+    <sceneid id="19">
+        <name>navigation</name>
+    </sceneid>
+    <sceneid id="21">
+        <name>video</name>
+    </sceneid>
+    <sceneid id="10">
+        <name>nolimits</name>
+        <temp>53000</temp>
+    </sceneid>
+    <sceneid id="15">
+        <name>arvr</name>
+        <temp>53000</temp>
+    </sceneid>
+    <sceneid id="12">
+        <name>camera</name>
+        <temp>49000</temp>
+    </sceneid>
+    <sceneid id="17">
+        <name>4k</name>
+        <temp>49000</temp>
+    </sceneid>
+    <sceneid id="18">
+        <name>4k</name>
+        <temp>49000</temp>
+    </sceneid>
+    <ntc name="xo-therm" temp="78000"/>
+    <ntc name="default" temp="95000"/>
+    <ntc name="quiet_therm" temp="70000"/>
+</scene>
+<!--END Thermal_ConfigFile-->
