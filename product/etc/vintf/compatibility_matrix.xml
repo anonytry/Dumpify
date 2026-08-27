@@ -1,0 +1,224 @@
+<!--
+    Input:
+        device/xiaomi/sky/product/device_framework_compatibility_matrix/vendor_framework_compatibility_matrix.xml
+        device/xiaomi/sky/product/device_framework_compatibility_matrix/vendor_framework_compatibility_matrix.xml
+        device/xiaomi/missi/device_framework_compatibility_matrix/mrm/vendor_framework_compatibility_matrix.xml
+        device/xiaomi/missi/device_framework_compatibility_matrix/mikeybag/vendor_framework_compatibility_matrix.xml
+        device/xiaomi/missi/device_framework_compatibility_matrix/micrtk/vendor_framework_compatibility_matrix.xml
+        device/xiaomi/missi/device_framework_compatibility_matrix/misecmedia/vendor_framework_compatibility_matrix.xml
+        device/xiaomi/missi/device_framework_compatibility_matrix/mseccam/vendor_framework_compatibility_matrix.xml
+-->
+<compatibility-matrix version="8.0" type="framework">
+    <hal format="hidl" optional="true">
+        <name>com.dsi.ant</name>
+        <version>1.0</version>
+        <interface>
+            <name>IAnt</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>com.dsi.ant</name>
+        <version>1.0</version>
+        <interface>
+            <name>IAnt</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>com.fingerprints.extension</name>
+        <version>1.0</version>
+        <interface>
+            <name>IFingerprintEngineering</name>
+            <instance>default</instance>
+        </interface>
+        <interface>
+            <name>IFingerprintNavigation</name>
+            <instance>default</instance>
+        </interface>
+        <interface>
+            <name>IFingerprintSensorTest</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>com.fingerprints.extension</name>
+        <version>1.0</version>
+        <interface>
+            <name>IFingerprintEngineering</name>
+            <instance>default</instance>
+        </interface>
+        <interface>
+            <name>IFingerprintNavigation</name>
+            <instance>default</instance>
+        </interface>
+        <interface>
+            <name>IFingerprintSensorTest</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>interfaces.factoryAta</name>
+        <version>1.0</version>
+        <interface>
+            <name>IFactoryAta</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>interfaces.factoryAta</name>
+        <version>1.0</version>
+        <interface>
+            <name>IFactoryAta</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>interfaces.factoryInterface</name>
+        <version>1.0</version>
+        <interface>
+            <name>IFactoryInterface</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>interfaces.factoryInterface</name>
+        <version>1.0</version>
+        <interface>
+            <name>IFactoryInterface</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.goodix.hardware.biometrics.fingerprint</name>
+        <version>2.1</version>
+        <interface>
+            <name>IGoodixFingerprintDaemon</name>
+            <instance>default</instance>
+        </interface>
+        <interface>
+            <name>IGoodixFingerprintDaemonExt</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.goodix.hardware.biometrics.fingerprint</name>
+        <version>2.1</version>
+        <interface>
+            <name>IGoodixFingerprintDaemon</name>
+            <instance>default</instance>
+        </interface>
+        <interface>
+            <name>IGoodixFingerprintDaemonExt</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.qti.hardware.radio.qcriNvOpt</name>
+        <version>1.0</version>
+        <interface>
+            <name>IqcriNvOpt</name>
+            <instance>qcrinvopt0</instance>
+            <instance>qcrinvopt1</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.qti.hardware.radio.qcriNvOpt</name>
+        <version>1.0</version>
+        <interface>
+            <name>IqcriNvOpt</name>
+            <instance>qcrinvopt0</instance>
+            <instance>qcrinvopt1</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.qti.hardware.radio.qcriNvOpt</name>
+        <version>1.0</version>
+        <interface>
+            <name>IqcriNvOpt</name>
+            <instance>qcrinvopt0</instance>
+            <instance>qcrinvopt1</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.qti.hardware.radio.qcriNvOpt</name>
+        <version>1.0</version>
+        <interface>
+            <name>IqcriNvOpt</name>
+            <instance>qcrinvopt0</instance>
+            <instance>qcrinvopt1</instance>
+        </interface>
+    </hal>
+    <hal format="aidl" optional="true">
+        <name>vendor.xiaomi.hardware.micrtk</name>
+        <interface>
+            <name>IMiCertKeyService</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl" optional="true">
+        <name>vendor.xiaomi.hardware.mikeybag</name>
+        <interface>
+            <name>IMiKeyBagService</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl" optional="true">
+        <name>vendor.xiaomi.hardware.misauth</name>
+        <interface>
+            <name>IMiSharedAuth</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl" optional="true">
+        <name>vendor.xiaomi.hardware.misecmedia</name>
+        <interface>
+            <name>IMiSecMediaService</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl" optional="true">
+        <name>vendor.xiaomi.hardware.mrm</name>
+        <interface>
+            <name>IMrm</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl" optional="true">
+        <name>vendor.xiaomi.hardware.mrm</name>
+        <interface>
+            <name>IMiCertificate</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl" optional="true">
+        <name>vendor.xiaomi.hardware.mrm</name>
+        <interface>
+            <name>IMrmRemoteAuth</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl" optional="true">
+        <name>vendor.xiaomi.hardware.seccam</name>
+        <interface>
+            <name>IMiSecCam</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.xiaomi.hardware.touchfeature</name>
+        <version>1.0</version>
+        <interface>
+            <name>ITouchFeature</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.xiaomi.hardware.touchfeature</name>
+        <version>1.0</version>
+        <interface>
+            <name>ITouchFeature</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+</compatibility-matrix>
