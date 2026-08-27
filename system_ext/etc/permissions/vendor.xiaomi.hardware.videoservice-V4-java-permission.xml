@@ -1,0 +1,4 @@
+<permissions>
+    <library name="vendor.xiaomi.hardware.videoservice-V4-java.jar"
+            file="/system_ext/framework/vendor.xiaomi.hardware.videoservice-V4-java.jar" />
+</permissions>

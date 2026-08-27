@@ -1,0 +1,10 @@
+<?xml version="2.0" encoding="utf-8"?>
+<!--
+    Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries.
+    All Rights Reserved.
+    Confidential and Proprietary - Qualcomm Technologies, Inc.
+-->
+<permissions>
+    <library name="vendor.qti.hardware.c2pa-V1-java"
+	     file="/system_ext/framework/vendor.qti.hardware.c2pa-V1-java.jar" />
+</permissions>

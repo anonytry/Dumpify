@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2018, Xiaomi Inc. All rights reserved. -->
+
+<permissions>
+    <library name="com.xiaomi.okhttp"
+            file="/system_ext/framework/mi-okhttp.jar"
+            dependency="com.xiaomi.org.conscrypt" />
+</permissions>
