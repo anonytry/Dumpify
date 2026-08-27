@@ -1,0 +1,145 @@
+{
+  "itemConfig": [
+    {
+      "showName": "VersionInfo"
+    },
+    {
+      "showName": "SimCard_HotPlug"
+    },
+    {
+      "showName": "Sdcard_Intent"
+    },
+    {
+      "showName": "KeyPad"
+    },
+	{
+      "showName": "TpOpenShort"
+    },
+    {
+      "showName": "LCD",
+      "paramconfig": {
+        "auto_switch": false,
+        "switch_lcd_mode": true,
+        "lcd_pic": [
+          "4_W255=2000",
+          "1_R255=2000",
+          "2_G255=2000",
+          "3_B255=2000",
+          "7-EdgeWhite=2000",
+          "6_W00=2000",
+          "8-crosstalkW=2000",
+          "9-crosstalkB=2000",
+          "10_W0127=2000",
+          "5_W064=2000",
+          "gradient=2000",
+          "14-flicker=2000",
+          "12-H1line=2000",
+          "11-sub1dot=2000"
+        ]
+      }
+    },
+    {
+      "showName": "LightTEST"
+    },
+    {
+      "showName": "TouchScreen"
+    },
+    {
+      "showName": "MainCamera"
+    },
+    {
+      "showName": "DepthCamera"
+    },
+    {
+      "showName": "DualBackCamera"
+    },
+    {
+      "showName": "QVGATEST"
+    },
+    {
+      "showName": "FrontCamera"
+    },
+    {
+      "showName": "Charge"
+    },
+    {
+      "showName": "WlanAP"
+    },
+    {
+      "showName": "WlanAddress"
+    },
+    {
+      "showName": "BluetoothDevice"
+    },
+    {
+      "showName": "BluetoothAddress"
+    },
+    {
+      "showName": "GPS"
+    },
+    {
+      "showName": "OTG"
+    },
+    {
+      "showName": "Magnetic"
+    },
+    {
+      "showName": "Accelerometer",
+      "paramconfig": {
+        "support_calibrate": false,
+        "support_axialresult": true,
+        "support_angle45": true,
+        "support_angleneg45": true,
+        "is_auto_calibrate": false,
+        "support_plus_or_minus_45_degrees_either_pass_through": false,
+        "autoTest": {
+          "support_calibrate": false
+        }
+      }
+    },
+    {
+      "showName": "Gyroscope",
+      "paramconfig": {
+        "support_calibrate": false,
+        "support_test": true,
+        "is_auto_calibrate": false
+      }
+    },
+      {
+      "showName": "Optical"
+    },
+    {
+      "showName": "Proximity"
+    },
+    {
+      "showName": "Speaker"
+    },
+    {
+      "showName": "Receiver"
+    },
+    {
+      "showName": "MainMicToHeadPhone"
+    },
+    {
+      "showName": "HeadSet"
+    },
+    {
+      "showName": "FM"
+    },
+    {
+      "showName": "fingerprint"
+    },
+    {
+      "showName": "Vibrator",
+      "paramconfig": {
+        "is_auto_vibrate": false
+      }
+    },
+    {
+      "showName": "NFC"
+    },
+    {
+      "showName": "Sar"
+    }
+  ]
+}

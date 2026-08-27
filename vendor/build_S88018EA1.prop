@@ -1,0 +1,10 @@
+
+ro.product.vendor.brand=Redmi
+ro.product.vendor.name=sky_global
+ro.product.vendor.device=sky
+ro.vendor.build.fingerprint=Redmi/sky_global/sky:14/UKQ1.231003.002/OS2.0.210.0.VMWMIXM:user/release-keys
+ro.product.vendor.model=23076RN4BI
+ro.product.vendor.marketname=Redmi 12 5G
+ro.product.board=sky
+ro.bootimage.build.fingerprint=Redmi/sky_global/sky:14/UKQ1.231003.002/OS2.0.210.0.VMWMIXM:user/release-keys
+

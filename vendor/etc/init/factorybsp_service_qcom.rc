@@ -1,0 +1,43 @@
+service interfaces.factoryInterface@1.0-service /vendor/bin/hw/interfaces.factoryInterface@1.0-service
+    class late_start
+    user system
+    group root system nfc sdcard_rw sdcard_r media_rw oem_2901 vendor_qti_diag
+    seclabel u:r:factory_services:s0
+
+#for wlan and bt ftmdaemon test
+on property:vendor.ptt_ffbm_bt=start
+    start ffbm_bt
+
+on property:vendor.ptt_ffbm_bt=stop
+    stop ffbm_bt
+
+on property:vendor.ptt_ffbm_wifi=start
+    #ifconfig wlan0 up
+    write /sys/module/adrastea/parameters/con_mode 5
+    start ffbm_wifi
+
+on property:vendor.ptt_ffbm_wifi=stop
+    write /sys/module/adrastea/parameters/con_mode 0
+    stop ffbm_wifi
+
+service ffbm_bt /vendor/bin/ftmdaemon -n -dd
+    user system
+    group system
+    seclabel u:r:hal_bluetooth_default:s0
+    disabled
+
+service ffbm_wifi /vendor/bin/ftmdaemon -n -dd
+    user root
+    group system vendor_qti_diag
+    disabled
+
+on property:ro.factory_mode=1
+    chmod 6755 /system/xbin/su
+    chmod 0664 /sys/class/drm/card0-DSI-1/hbm
+    chmod 0664 /sys/class/drm/card0-DSI-1/doze_brightness
+#   chmod 0664 /sys/class/leds/vibrator/osc_cali
+    chmod 0660 /dev/block/sda17
+
+on property:ro.factory_mode=1 && property:vendor.factory.start_gsort=start
+    exec u:r:su:s0 -- /vendor/bin/start_gsort.sh
+    setprop vendor.factory.start_gsort done

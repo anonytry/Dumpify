@@ -1,0 +1,10 @@
+
+ro.product.vendor.brand=Redmi
+ro.product.vendor.name=
+ro.product.vendor.device=sky
+ro.vendor.build.fingerprint=Redmi//sky:14/UKQ1.231003.002/OS2.0.210.0.VMWMIXM:user/release-keys
+ro.product.vendor.model=
+ro.product.vendor.marketname=
+ro.product.board=sky
+ro.bootimage.build.fingerprint=Redmi//sky:14/UKQ1.231003.002/OS2.0.210.0.VMWMIXM:user/release-keys
+

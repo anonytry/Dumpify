@@ -1,0 +1,10 @@
+interval 5
+reset 0																//set VEN to 1
+sleep 100
+reset 1																//set VEN to 1
+sleep 100
+send 20000101														// NCI CORE RESET CMD
+send 2001020000
+//phase 90°
+send 20030301A017
+end

@@ -1,0 +1,34 @@
+{
+  "itemConfig": [
+    {
+      "showName": "VersionInfo"
+    },
+    {
+      "showName": "SimCard_HotPlug"
+    },
+    {
+      "showName": "Sdcard_Intent"
+    },
+    {
+      "showName": "WlanAddress"
+    },
+    {
+      "showName": "BluetoothAddress"
+    },
+    {
+      "showName": "LCD",
+      "paramconfig": {
+        "auto_switch": false,
+        "switch_lcd_mode": false,
+        "lcd_pic": [
+          "02_W255=2000",
+          "08_crosstalk=2000",
+          "12_gradual=2000",
+          "13_gradual=2000",
+          "21_gradual=2000",
+          "22_gradual=2000"
+        ]
+      }
+    }
+  ]
+}

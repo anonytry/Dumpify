@@ -1,0 +1,10 @@
+
+ro.product.vendor.brand=POCO
+ro.product.vendor.name=sky_p_global
+ro.product.vendor.device=sky
+ro.vendor.build.fingerprint=POCO/sky_p_global/sky:14/UKQ1.231003.002/OS2.0.210.0.VMWMIXM:user/release-keys
+ro.product.vendor.model=23076PC4BI
+ro.product.vendor.marketname=POCO M6 Pro 5G
+ro.product.board=sky
+ro.bootimage.build.fingerprint=POCO/sky_p_global/sky:14/UKQ1.231003.002/OS2.0.210.0.VMWMIXM:user/release-keys
+

@@ -1,0 +1,10 @@
+
+ro.product.vendor.brand=Redmi
+ro.product.vendor.name=river_global
+ro.product.vendor.device=river
+ro.vendor.build.fingerprint=Redmi/river_global/river:14/UKQ1.231003.002/OS2.0.210.0.VMWMIXM:user/release-keys
+ro.product.vendor.model=23077RABDC
+ro.product.vendor.marketname=Redmi 12 5G
+ro.product.board=river
+ro.bootimage.build.fingerprint=Redmi/river_global/river:14/UKQ1.231003.002/OS2.0.210.0.VMWMIXM:user/release-keys
+

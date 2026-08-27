@@ -1,0 +1,10 @@
+
+ro.product.vendor.brand=Redmi
+ro.product.vendor.name=
+ro.product.vendor.device=XIG03
+ro.vendor.build.fingerprint=Redmi//XIG03:14/UKQ1.231003.002/OS2.0.210.0.VMWMIXM:user/release-keys
+ro.product.vendor.model=XIG03
+ro.product.vendor.marketname=Redmi 12 5G
+ro.product.board=XIG03
+ro.bootimage.build.fingerprint=Redmi//XIG03:14/UKQ1.231003.002/OS2.0.210.0.VMWMIXM:user/release-keys
+
